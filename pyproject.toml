@@ -7,6 +7,7 @@ dependencies = [
     "geopandas>=1.0.1",
     "jupyter>=1.1.1",
     "matplotlib-scalebar>=0.9.0",
+    "notebook>=7.3.2",
     "owslib>=0.32.1",
     "pyproj>=3.7.1",
     "rasterio>=1.4.3",
