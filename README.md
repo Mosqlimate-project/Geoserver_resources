@@ -23,3 +23,7 @@ Finally, activate the virtual environment:
 ```bash
 source .venv/bin/activate
 ```
+
+# QML files
+
+These are support files to be used within QGIS (Symbology > Style > Load Style). Details for the MapBiomas products can be found at https://brasil.mapbiomas.org/codigos-de-legenda/
