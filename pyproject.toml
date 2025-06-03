@@ -6,10 +6,18 @@ dependencies = [
     "geojson>=3.2.0",
     "geopandas>=1.0.1",
     "jupyter>=1.1.1",
+    "marimo>=0.13.15",
     "matplotlib-scalebar>=0.9.0",
     "notebook>=7.3.2",
     "owslib>=0.32.1",
     "pyproj>=3.7.1",
+    "pytest>=8.4.0",
     "rasterio>=1.4.3",
+    "rasterstats>=0.20.0",
     "requests>=2.32.3",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.4.0",
 ]

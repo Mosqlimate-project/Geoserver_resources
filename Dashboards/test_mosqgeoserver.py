@@ -7,7 +7,8 @@ from mosqgeoserver import (
     extract_grid_envelope,
     calc_bbox_pixelsize,
     get_crop_pixelbbox,
-    get_municipio_bounds
+    get_municipio_bounds,
+    calc_resolution_deg_by_pixel
 )
 
 # Sample test data
@@ -51,6 +52,16 @@ def test_get_native_pixel_dims(mock_get, mock_describe_response):
     assert width == 1001  # high - low + 1
     assert height == 501
 
+def test_calc_resolution_deg_by_pixel():
+    """Test calculating resolution in degrees per pixel"""
+    bbox = [0, 0, 100, 50]
+    native_width, native_height = 1000, 500
+
+    res_x, res_y = calc_resolution_deg_by_pixel(bbox, native_width, native_height)
+
+    assert np.isclose(res_x, 0.1)
+    assert np.isclose(res_y, 0.1)
+
 def test_calc_bbox_pixelsize():
     """Test calculating pixel size for a bounding box"""
     bbox = [0, 0, 100, 50]
@@ -61,8 +72,9 @@ def test_calc_bbox_pixelsize():
 
 def test_get_crop_pixelbbox():
     """Test calculating crop dimensions in pixels"""
+    origbox = [0, 0, 100, 50]
     bbox = [10, 10, 20, 20]
-    width, height = get_crop_pixelbbox(bbox, 1000, 500)
+    width, height = get_crop_pixelbbox(origbox, bbox, 1000, 500)
     
     # Expected: (20-10)/0.1 = 100, (20-10)/0.1 = 100
     assert width == 100
